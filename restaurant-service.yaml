@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: restaurant-service
-        image: vidura12/restaurant-service
+        image: vidura12/restaurant-service:latest
         ports:
         - containerPort: 80
 ---
