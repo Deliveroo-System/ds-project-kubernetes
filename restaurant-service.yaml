@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: restaurant-service
-        image: vidura12/ds-project:restaurant-service
+        image: vidura12/restaurant-service
         ports:
         - containerPort: 80
 ---
