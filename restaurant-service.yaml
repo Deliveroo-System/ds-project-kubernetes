@@ -13,10 +13,12 @@ spec:
         app: restaurant-service
     spec:
       containers:
-      - name: restaurant-service
-        image: vidura12/restaurant-service:latest
-        ports:
-        - containerPort: 80
+        - name: restaurant-service
+          image: vidura12/deliveroo:restaurant-service-latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+
 ---
 apiVersion: v1
 kind: Service
