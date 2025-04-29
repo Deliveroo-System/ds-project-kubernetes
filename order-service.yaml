@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-service
+  template:
+    metadata:
+      labels:
+        app: order-service
+    spec:
+      containers:
+      - name: order-service
+        image: vidura12/deliveroo:order-service-latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: PORT
+          value: "5000"
+        - name: MONGO_URI
+          value: "mongodb+srv://nimeshakavindhi4:Nimesha1234@order-management.mrwdc.mongodb.net/"
+        - name: JWT_SECRET
+          value: "MyVerySecretKey1234567891011121314"
+        - name: JWT_ISSUER
+          value: "RestaurantIssuer"
+        - name: JWT_AUDIENCE
+          value: "RestaurantAudience"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+spec:
+  selector:
+    app: order-service
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+  type: LoadBalancer
